@@ -7,7 +7,7 @@ Este proyecto consiste en desarrollar una aplicación en **C# con Windows Forms*
 ## Integrantes
 
 - Daniel Espinoza
-- Hiram
+- Hiram Licea
 
 ## Descripción general
 
