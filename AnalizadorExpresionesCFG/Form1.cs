@@ -41,5 +41,122 @@ namespace AnalizadorExpresionesCFG
         {
 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "X";
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "^";
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "-";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "/";
+        }
+
+        private void button13_Click_1(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "d";
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "2";
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "5";
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "1";
+        }
+
+        private void Siete_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "7";
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "0";
+        }
+
+        private void Doble_Cero_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "00";
+        }
+
+        private void Tres_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "3";
+        }
+
+        private void Cuatro_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "4";
+        }
+
+        private void Seis_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "6";
+        }
+
+        private void Ocho_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "8";
+        }
+
+        private void Nueve_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "9";
+        }
+
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "+";
+        }
+
+        private void Parentesis_izq_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += "(";
+        }
+
+        private void Parentesis_der_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text += ")";
+        }
+
+        private void AC_Click(object sender, EventArgs e)
+        {
+            textBoxExpresionMatematica.Text = String.Empty;
+        }
+
+        private void textBoxExpresionMatematica_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '.')
+            {
+                e.KeyChar = 'd';
+            }
+            else if (e.KeyChar == '*')
+            {
+                e.KeyChar = 'X';
+            }
+            else if (e.KeyChar == 'x')
+            {
+                e.KeyChar = 'X';
+            }
+        }
     }
+    
 }
