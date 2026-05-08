@@ -24,7 +24,7 @@ namespace AnalizadorExpresionesCFG
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            LimpiarCampos();
         }
 
         private void tabControlPrincipal_Click(object sender, EventArgs e)
@@ -64,7 +64,7 @@ namespace AnalizadorExpresionesCFG
 
         private void button13_Click_1(object sender, EventArgs e)
         {
-            textBoxExpresionMatematica.Text += "d";
+            textBoxExpresionMatematica.Text += ".";
         }
 
         private void button12_Click(object sender, EventArgs e)
@@ -137,18 +137,20 @@ namespace AnalizadorExpresionesCFG
             textBoxExpresionMatematica.Text += ")";
         }
 
-        private void AC_Click(object sender, EventArgs e)
+        //Funcion que limpia el campo de texto de la expresion matematica
+        private void LimpiarCampos() 
         {
             textBoxExpresionMatematica.Text = String.Empty;
         }
 
+        private void AC_Click(object sender, EventArgs e)
+        {
+            LimpiarCampos();
+        }
+
         private void textBoxExpresionMatematica_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == '.')
-            {
-                e.KeyChar = 'd';
-            }
-            else if (e.KeyChar == '*')
+            if (e.KeyChar == '*')
             {
                 e.KeyChar = 'X';
             }
@@ -158,5 +160,4 @@ namespace AnalizadorExpresionesCFG
             }
         }
     }
-    
 }
