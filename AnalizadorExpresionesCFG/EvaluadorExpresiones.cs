@@ -93,12 +93,6 @@ namespace AnalizadorExpresionesCFG
                 throw new Exception("Se esperaba un número o paréntesis.");
             }
 
-            if (CaracterActual() == '+')
-            {
-                posicion++;
-                return Factor();
-            }
-
             if (CaracterActual() == '-')
             {
                 posicion++;
