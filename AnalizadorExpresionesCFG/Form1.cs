@@ -37,9 +37,22 @@ namespace AnalizadorExpresionesCFG
 
         }
 
+        //funcion que se ejecuta al hacer click en evaluar.
         private void buttonEvaluar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                EvaluadorExpresiones evaluador = new EvaluadorExpresiones(); 
 
+                double resultado = evaluador.Evaluar(textBoxExpresionMatematica.Text);  //esta linea toma la expresion que el usario escribio y la manda al evaluador para que la procese y devuelva el resultado
+
+                textBoxResultado.Text = resultado.ToString(); //ponemos el resultado en la caja de resultado
+            }
+            catch (Exception error)
+            {
+                textBoxResultado.Clear();
+                MessageBox.Show(error.Message, "Error en la expresión");
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
