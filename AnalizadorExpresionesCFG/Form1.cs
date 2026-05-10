@@ -55,7 +55,7 @@ namespace AnalizadorExpresionesCFG
         private void btnSuma_Click(object sender, EventArgs e) { AgregarTexto("+"); }
         private void btnResta_Click(object sender, EventArgs e) { AgregarTexto("-"); }
         private void btnMultiplicar_Click(object sender, EventArgs e) { AgregarTexto("X"); }
-        private void btnPunto_Click(object sender, EventArgs e) { AgregarTexto("d"); }
+        private void btnPunto_Click(object sender, EventArgs e) { AgregarTexto("."); }
         private void btnDivision_Click(object sender, EventArgs e) { AgregarTexto("/"); }
         private void btnPotencia_Click(object sender, EventArgs e) { AgregarTexto("^"); }
         private void btnParIzq_Click(object sender, EventArgs e) { AgregarTexto("("); }
