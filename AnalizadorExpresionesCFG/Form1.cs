@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AnalizadorExpresionesCFG
@@ -17,160 +10,74 @@ namespace AnalizadorExpresionesCFG
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        //LOGICA
+        private void AgregarTexto(string texto)
         {
-
+            textBoxExpresionMatematica.Text += texto;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void LimpiarCampos()
         {
-            LimpiarCampos();
+            textBoxExpresionMatematica.Text = string.Empty;
+            textBoxResultado.Text = string.Empty;
         }
 
-        private void tabControlPrincipal_Click(object sender, EventArgs e)
+        private void EvaluarExpresionDesdeFormulario()
         {
+            if (string.IsNullOrWhiteSpace(textBoxExpresionMatematica.Text))
+            {
+                MessageBox.Show("La expresión no puede estar vacía.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //funcion que se ejecuta al hacer click en evaluar.
-        private void buttonEvaluar_Click(object sender, EventArgs e)
-        {
             try
             {
-                EvaluadorExpresiones evaluador = new EvaluadorExpresiones(); 
+                EvaluadorExpresiones evaluador = new EvaluadorExpresiones();
+                double resultado = evaluador.Evaluar(textBoxExpresionMatematica.Text);
+                textBoxResultado.Text = resultado.ToString();
 
-                double resultado = evaluador.Evaluar(textBoxExpresionMatematica.Text);  //esta linea toma la expresion que el usario escribio y la manda al evaluador para que la procese y devuelva el resultado
-
-                textBoxResultado.Text = resultado.ToString(); //ponemos el resultado en la caja de resultado
+                string entradaHistorial = textBoxExpresionMatematica.Text + " = " + resultado.ToString();
+                listBoxHistorial.Items.Add(entradaHistorial);
             }
             catch (Exception error)
             {
                 textBoxResultado.Clear();
-                MessageBox.Show(error.Message, "Error en la expresión");
+                MessageBox.Show(error.Message, "Error en la expresión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "X";
-        }
+        //INTERFAZ
+        private void btnEvaluar_Click(object sender, EventArgs e) { EvaluarExpresionDesdeFormulario(); }
+        private void btnLimpiar_Click(object sender, EventArgs e) { LimpiarCampos(); }
+        private void btnAC_Click(object sender, EventArgs e) { LimpiarCampos(); }
 
-        private void button13_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "^";
-        }
+        //BOTONES - OPERACIONES
+        private void btnSuma_Click(object sender, EventArgs e) { AgregarTexto("+"); }
+        private void btnResta_Click(object sender, EventArgs e) { AgregarTexto("-"); }
+        private void btnMultiplicar_Click(object sender, EventArgs e) { AgregarTexto("X"); }
+        private void btnPunto_Click(object sender, EventArgs e) { AgregarTexto("d"); }
+        private void btnDivision_Click(object sender, EventArgs e) { AgregarTexto("/"); }
+        private void btnPotencia_Click(object sender, EventArgs e) { AgregarTexto("^"); }
+        private void btnParIzq_Click(object sender, EventArgs e) { AgregarTexto("("); }
+        private void btnParDer_Click(object sender, EventArgs e) { AgregarTexto(")"); }
 
-        private void button10_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "-";
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "/";
-        }
-
-        private void button13_Click_1(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += ".";
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "2";
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "5";
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "1";
-        }
-
-        private void Siete_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "7";
-        }
-
-        private void button5_Click_1(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "0";
-        }
-
-        private void Doble_Cero_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "00";
-        }
-
-        private void Tres_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "3";
-        }
-
-        private void Cuatro_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "4";
-        }
-
-        private void Seis_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "6";
-        }
-
-        private void Ocho_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "8";
-        }
-
-        private void Nueve_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "9";
-        }
-
-        private void button10_Click_1(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "+";
-        }
-
-        private void Parentesis_izq_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += "(";
-        }
-
-        private void Parentesis_der_Click(object sender, EventArgs e)
-        {
-            textBoxExpresionMatematica.Text += ")";
-        }
-
-        //Funcion que limpia el campo de texto de la expresion matematica
-        private void LimpiarCampos() 
-        {
-            textBoxExpresionMatematica.Text = String.Empty;
-        }
-
-        private void AC_Click(object sender, EventArgs e)
-        {
-            LimpiarCampos();
-        }
+        //BOTONES - NUMEROS
+        private void btnNum0_Click(object sender, EventArgs e) { AgregarTexto("0"); }
+        private void btnNum00_Click(object sender, EventArgs e) { AgregarTexto("00"); }
+        private void btnNum1_Click(object sender, EventArgs e) { AgregarTexto("1"); }
+        private void btnNum2_Click(object sender, EventArgs e) { AgregarTexto("2"); }
+        private void btnNum3_Click(object sender, EventArgs e) { AgregarTexto("3"); }
+        private void btnNum4_Click(object sender, EventArgs e) { AgregarTexto("4"); }
+        private void btnNum5_Click(object sender, EventArgs e) { AgregarTexto("5"); }
+        private void btnNum6_Click(object sender, EventArgs e) { AgregarTexto("6"); }
+        private void btnNum7_Click(object sender, EventArgs e) { AgregarTexto("7"); }
+        private void btnNum8_Click(object sender, EventArgs e) { AgregarTexto("8"); }
+        private void btnNum9_Click(object sender, EventArgs e) { AgregarTexto("9"); }
+        
 
         private void textBoxExpresionMatematica_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == '*')
-            {
-                e.KeyChar = 'X';
-            }
-            else if (e.KeyChar == 'x')
-            {
-                e.KeyChar = 'X';
-            }
+            if (e.KeyChar == '*' || e.KeyChar == 'x') e.KeyChar = 'X';
         }
     }
 }
