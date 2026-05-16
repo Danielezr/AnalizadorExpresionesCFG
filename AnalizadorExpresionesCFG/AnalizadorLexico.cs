@@ -32,6 +32,10 @@ namespace AnalizadorExpresionesCFG
                 {
                     posicion++;
                 }
+                else if (char.IsDigit(actual))
+                {
+                    tokens.Add(LeerNumero());
+                }
                 else if (actual == '+')
                 {
                     tokens.Add(new Token("+", TipoToken.OperadorSuma, posicion));
@@ -77,6 +81,21 @@ namespace AnalizadorExpresionesCFG
             tokens.Add(new Token("FIN", TipoToken.Fin, posicion));
 
             return tokens;
+        }
+
+        //esta funcion sirve para que si un numero tiene más de un dígito, este se leea completamente antes de crear el token.
+        private Token LeerNumero()
+        {
+            int inicio = posicion;
+
+            while (posicion < expresion.Length && char.IsDigit(expresion[posicion]))
+            {
+                posicion++;
+            }
+
+            string valor = expresion.Substring(inicio, posicion - inicio);
+
+            return new Token(valor, TipoToken.Numero, inicio);
         }
     }
 }
