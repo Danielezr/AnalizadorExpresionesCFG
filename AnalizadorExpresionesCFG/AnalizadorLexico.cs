@@ -87,10 +87,35 @@ namespace AnalizadorExpresionesCFG
         private Token LeerNumero()
         {
             int inicio = posicion;
+            bool tienePunto = false;
 
-            while (posicion < expresion.Length && char.IsDigit(expresion[posicion]))
+            while (posicion < expresion.Length)
             {
-                posicion++;
+                char actual = expresion[posicion];
+
+                if (char.IsDigit(actual))
+                {
+                    posicion++;
+                }
+                else if (actual == '.')
+                {
+                    if (tienePunto)
+                    {
+                        throw new Exception("Número decimal inválido en la posición " + posicion + ".");
+                    }
+
+                    tienePunto = true;
+                    posicion++;
+
+                    if (posicion >= expresion.Length || !char.IsDigit(expresion[posicion]))
+                    {
+                        throw new Exception("Número decimal inválido en la posición " + posicion + ".");
+                    }
+                }
+                else
+                {
+                    break;
+                }
             }
 
             string valor = expresion.Substring(inicio, posicion - inicio);
