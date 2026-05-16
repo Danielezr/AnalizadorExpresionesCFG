@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Lee la expresión de izquierda a derecha.
+//Si encuentra espacios, los ignora.
+//Si encuentra cualquier otra cosa, marca error.
+
+using System;
 using System.Collections.Generic;
 
 namespace AnalizadorExpresionesCFG
@@ -28,10 +32,46 @@ namespace AnalizadorExpresionesCFG
                 {
                     posicion++;
                 }
+                else if (actual == '+')
+                {
+                    tokens.Add(new Token("+", TipoToken.OperadorSuma, posicion));
+                    posicion++;
+                }
+                else if (actual == '-')
+                {
+                    tokens.Add(new Token("-", TipoToken.OperadorResta, posicion));
+                    posicion++;
+                }
+                else if (actual == 'X' || actual == 'x' || actual == '*')
+                {
+                    tokens.Add(new Token(actual.ToString(), TipoToken.OperadorMultiplicacion, posicion));
+                    posicion++;
+                }
+                else if (actual == '/')
+                {
+                    tokens.Add(new Token("/", TipoToken.OperadorDivision, posicion));
+                    posicion++;
+                }
+                else if (actual == '^')
+                {
+                    tokens.Add(new Token("^", TipoToken.OperadorPotencia, posicion));
+                    posicion++;
+                }
+                else if (actual == '(')
+                {
+                    tokens.Add(new Token("(", TipoToken.ParentesisIzquierdo, posicion));
+                    posicion++;
+                }
+                else if (actual == ')')
+                {
+                    tokens.Add(new Token(")", TipoToken.ParentesisDerecho, posicion));
+                    posicion++;
+                }
                 else
                 {
                     throw new Exception("Carácter no reconocido '" + actual + "' en la posición " + posicion + ".");
                 }
+
             }
 
             tokens.Add(new Token("FIN", TipoToken.Fin, posicion));
