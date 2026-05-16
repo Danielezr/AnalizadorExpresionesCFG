@@ -1,6 +1,6 @@
-﻿//Lee la expresión de izquierda a derecha.
-//Si encuentra espacios, los ignora.
-//Si encuentra cualquier otra cosa, marca error.
+﻿// Analizador léxico para expresiones matemáticas.
+// Lee la expresión de izquierda a derecha y la separa en tokens:
+// números, operadores, paréntesis y token final FIN.
 
 using System;
 using System.Collections.Generic;
@@ -32,45 +32,54 @@ namespace AnalizadorExpresionesCFG
                 {
                     posicion++;
                 }
-                else if (char.IsDigit(actual))
+
+                else if (char.IsDigit(actual) || actual == '.')
                 {
                     tokens.Add(LeerNumero());
                 }
+
                 else if (actual == '+')
                 {
                     tokens.Add(new Token("+", TipoToken.OperadorSuma, posicion));
                     posicion++;
                 }
+
                 else if (actual == '-')
                 {
                     tokens.Add(new Token("-", TipoToken.OperadorResta, posicion));
                     posicion++;
                 }
+
                 else if (actual == 'X' || actual == 'x' || actual == '*')
                 {
                     tokens.Add(new Token(actual.ToString(), TipoToken.OperadorMultiplicacion, posicion));
                     posicion++;
                 }
+
                 else if (actual == '/')
                 {
                     tokens.Add(new Token("/", TipoToken.OperadorDivision, posicion));
                     posicion++;
                 }
+
                 else if (actual == '^')
                 {
                     tokens.Add(new Token("^", TipoToken.OperadorPotencia, posicion));
                     posicion++;
                 }
+
                 else if (actual == '(')
                 {
                     tokens.Add(new Token("(", TipoToken.ParentesisIzquierdo, posicion));
                     posicion++;
                 }
+
                 else if (actual == ')')
                 {
                     tokens.Add(new Token(")", TipoToken.ParentesisDerecho, posicion));
                     posicion++;
                 }
+
                 else
                 {
                     throw new Exception("Carácter no reconocido '" + actual + "' en la posición " + posicion + ".");
@@ -83,11 +92,13 @@ namespace AnalizadorExpresionesCFG
             return tokens;
         }
 
-        //esta funcion sirve para que si un numero tiene más de un dígito, este se leea completamente antes de crear el token.
+        // Lee un número completo antes de crear el token.
+        // Acepta enteros y decimales como 25, 3.14, 0.5 y .5.
         private Token LeerNumero()
         {
             int inicio = posicion;
             bool tienePunto = false;
+            bool tieneDigito = false;
 
             while (posicion < expresion.Length)
             {
@@ -95,6 +106,7 @@ namespace AnalizadorExpresionesCFG
 
                 if (char.IsDigit(actual))
                 {
+                    tieneDigito = true;
                     posicion++;
                 }
                 else if (actual == '.')
@@ -106,11 +118,6 @@ namespace AnalizadorExpresionesCFG
 
                     tienePunto = true;
                     posicion++;
-
-                    if (posicion >= expresion.Length || !char.IsDigit(expresion[posicion]))
-                    {
-                        throw new Exception("Número decimal inválido en la posición " + posicion + ".");
-                    }
                 }
                 else
                 {
@@ -119,6 +126,16 @@ namespace AnalizadorExpresionesCFG
             }
 
             string valor = expresion.Substring(inicio, posicion - inicio);
+
+            if (!tieneDigito)
+            {
+                throw new Exception("Número decimal inválido en la posición " + inicio + ".");
+            }
+
+            if (valor.EndsWith("."))
+            {
+                throw new Exception("Número decimal inválido en la posición " + inicio + ".");
+            }
 
             return new Token(valor, TipoToken.Numero, inicio);
         }
