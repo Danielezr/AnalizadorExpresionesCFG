@@ -46,8 +46,15 @@ namespace AnalizadorExpresionesCFG
 
                 else if (actual == '-')
                 {
-                    tokens.Add(new Token("-", TipoToken.OperadorResta, posicion));
-                    posicion++;
+                    if (DebeSerNumeroNegativo())
+                    {
+                        tokens.Add(LeerNumero());
+                    }
+                    else
+                    {
+                        tokens.Add(new Token("-", TipoToken.OperadorResta, posicion));
+                        posicion++;
+                    }
                 }
 
                 else if (actual == 'X' || actual == 'x' || actual == '*')
@@ -100,6 +107,11 @@ namespace AnalizadorExpresionesCFG
             bool tienePunto = false;
             bool tieneDigito = false;
 
+            if (expresion[posicion] == '-')
+            {
+                posicion++;
+            }
+
             while (posicion < expresion.Length)
             {
                 char actual = expresion[posicion];
@@ -139,5 +151,35 @@ namespace AnalizadorExpresionesCFG
 
             return new Token(valor, TipoToken.Numero, inicio);
         }
+
+        private bool DebeSerNumeroNegativo()
+        {
+            if (posicion + 1 >= expresion.Length)
+            {
+                return false;
+            }
+
+            char siguiente = expresion[posicion + 1];
+
+            if (!char.IsDigit(siguiente) && siguiente != '.')
+            {
+                return false;
+            }
+
+            if (tokens.Count == 0)
+            {
+                return true;
+            }
+
+            TipoToken tipoAnterior = tokens[tokens.Count - 1].Tipo;
+
+            return tipoAnterior == TipoToken.OperadorSuma ||
+                   tipoAnterior == TipoToken.OperadorResta ||
+                   tipoAnterior == TipoToken.OperadorMultiplicacion ||
+                   tipoAnterior == TipoToken.OperadorDivision ||
+                   tipoAnterior == TipoToken.OperadorPotencia ||
+                   tipoAnterior == TipoToken.ParentesisIzquierdo;
+        }
+
     }
 }
