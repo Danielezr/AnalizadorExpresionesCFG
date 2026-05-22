@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace AnalizadorExpresionesCFG
 {
@@ -16,10 +17,23 @@ namespace AnalizadorExpresionesCFG
             textBoxExpresionMatematica.Text += texto;
         }
 
+        private void MostrarTokens(List<Token>tokens)
+        {
+            dataGridViewTokens.Rows.Clear();
+            foreach (var token in tokens)
+            {
+                dataGridViewTokens.Rows.Add(token.Valor, token.Tipo.ToString(), token.Posicion);
+            }
+        }
+
         private void LimpiarCampos()
         {
             textBoxExpresionMatematica.Text = string.Empty;
             textBoxResultado.Text = string.Empty;
+            if (dataGridViewTokens != null)
+            {
+                dataGridViewTokens.Rows.Clear();
+            } 
         }
 
         private void EvaluarExpresionDesdeFormulario()
@@ -32,6 +46,10 @@ namespace AnalizadorExpresionesCFG
 
             try
             {
+                AnalizadorLexico lexer = new AnalizadorLexico();
+                List<Token> listaTokens = lexer.Analizar(textBoxExpresionMatematica.Text);
+                MostrarTokens(listaTokens);
+
                 EvaluadorExpresiones evaluador = new EvaluadorExpresiones();
                 double resultado = evaluador.Evaluar(textBoxExpresionMatematica.Text);
                 textBoxResultado.Text = resultado.ToString();
@@ -42,6 +60,7 @@ namespace AnalizadorExpresionesCFG
             catch (Exception error)
             {
                 textBoxResultado.Clear();
+                dataGridViewTokens.Rows.Clear();
                 MessageBox.Show(error.Message, "Error en la expresión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -78,6 +97,11 @@ namespace AnalizadorExpresionesCFG
         private void textBoxExpresionMatematica_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '*' || e.KeyChar == 'x') e.KeyChar = 'X';
+        }
+
+        private void dataGridViewTokens_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
