@@ -36,3 +36,13 @@ El programa ahora es capaz de:
 - Separar la expresión en tokens individuales (números, operadores, paréntesis y el token FIN).
 - Mostrar en una tabla interactiva de la interfaz el **Valor**, el **Tipo** y la **Posición** exacta de cada token generado.
 - Detectar y notificar errores léxicos de manera segura, como la inserción de caracteres no reconocidos (ej. letras) o formatos decimales inválidos (ej. `3..14`).
+
+### Avance 4 / Proyecto Final: Analizador sintáctico
+En esta etapa final se integró el analizador sintáctico utilizando el enfoque de **Descenso Recursivo**. Se implementó una gramática sin recursión a la izquierda para procesar los tokens generados por el analizador léxico.
+
+Características principales de esta versión:
+- **Evaluación gramatical:** Verifica que la estructura matemática de la expresión sea correcta mediante los métodos `Expresion`, `Termino` y `Factor`, respetando la precedencia de operadores.
+- **Árbol de derivación:** Genera un Árbol de Sintaxis Abstracta (AST) de la expresión ingresada, visualizado dinámicamente mediante un control `TreeView`.
+- **Tabla de derivación:** Registra y muestra paso a paso las reglas de producción aplicadas durante el análisis.
+- **Manejo de errores:** Atrapa errores sintácticos indicando exactamente el token inesperado y su posición en la cadena.
+- **Historial:** Mantiene un registro de las expresiones correctamente evaluadas durante la sesión.
