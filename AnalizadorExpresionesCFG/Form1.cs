@@ -9,6 +9,10 @@ namespace AnalizadorExpresionesCFG
         public Form1()
         {
             InitializeComponent();
+            dataGridViewDerivacion.AllowUserToAddRows = false;
+            dataGridViewDerivacion.AllowUserToDeleteRows = false;
+            dataGridViewDerivacion.ReadOnly = true;
+            dataGridViewDerivacion.RowHeadersVisible = false;
         }
 
         //LOGICA
@@ -26,14 +30,27 @@ namespace AnalizadorExpresionesCFG
             }
         }
 
+        //FUNCION PARA LIMPIAR LOS CAMPOS DE TEXTO, EL DATA GRID VIEW DE TOKENS, EL TREEVIEW DE DERIVACION Y EL DATA GRID VIEW DE DERIVACION
         private void LimpiarCampos()
         {
             textBoxExpresionMatematica.Text = string.Empty;
             textBoxResultado.Text = string.Empty;
+
             if (dataGridViewTokens != null)
             {
                 dataGridViewTokens.Rows.Clear();
-            } 
+            }
+
+            if (treeViewDerivacion != null)
+            {
+                treeViewDerivacion.Nodes.Clear();
+            }
+
+            if (dataGridViewDerivacion != null)
+            {
+                dataGridViewDerivacion.Rows.Clear();
+                dataGridViewDerivacion.Columns.Clear();
+            }
         }
 
         private void EvaluarExpresionDesdeFormulario()
