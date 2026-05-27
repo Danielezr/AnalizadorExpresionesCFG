@@ -46,12 +46,21 @@ namespace AnalizadorExpresionesCFG
 
             try
             {
+                dataGridViewTokens.Rows.Clear();
+                textBoxResultado.Clear();
+
                 AnalizadorLexico lexer = new AnalizadorLexico();
                 List<Token> listaTokens = lexer.Analizar(textBoxExpresionMatematica.Text);
+
                 MostrarTokens(listaTokens);
 
-                EvaluadorExpresiones evaluador = new EvaluadorExpresiones();
-                double resultado = evaluador.Evaluar(textBoxExpresionMatematica.Text);
+                AnalizadorSintactico parser = new AnalizadorSintactico(listaTokens);
+                double resultado = parser.Parsear();
+
+                // Mostrar el árbol de derivación en el TreeView
+                MostrarArbol(parser.RaizArbol);
+                MostrarTablaDerivacion(parser.HistorialDerivacion);
+
                 textBoxResultado.Text = resultado.ToString();
 
                 string entradaHistorial = textBoxExpresionMatematica.Text + " = " + resultado.ToString();
@@ -60,7 +69,9 @@ namespace AnalizadorExpresionesCFG
             catch (Exception error)
             {
                 textBoxResultado.Clear();
-                dataGridViewTokens.Rows.Clear();
+                treeViewDerivacion.Nodes.Clear(); // Limpiar el TreeView en caso de error
+                dataGridViewDerivacion.Rows.Clear();
+
                 MessageBox.Show(error.Message, "Error en la expresión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -102,6 +113,55 @@ namespace AnalizadorExpresionesCFG
         private void dataGridViewTokens_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void treeViewDerivacion_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+        
+        //FUNCION PARA MOSTRAR EL ARBOL DE DERIVACION EN EL TREEVIEW
+        private void MostrarArbol(NodoDerivacion raiz)
+        {
+            treeViewDerivacion.Nodes.Clear();
+
+            if (raiz == null)
+            {
+                return;
+            }
+
+            TreeNode nodoPrincipal = ConvertirNodoATreeNode(raiz);
+            treeViewDerivacion.Nodes.Add(nodoPrincipal);
+            treeViewDerivacion.ExpandAll();
+        }
+
+        //FUNCION RECURSIVA PARA CONVERTIR LOS NODOS DE DERIVACION EN NODOS VISUALES PARA EL TREEVIEW
+        private TreeNode ConvertirNodoATreeNode(NodoDerivacion nodo)
+        {
+            TreeNode nodoVisual = new TreeNode(nodo.Valor);
+
+            foreach (NodoDerivacion hijo in nodo.Hijos)
+            {
+                nodoVisual.Nodes.Add(ConvertirNodoATreeNode(hijo));
+            }
+
+            return nodoVisual;
+        }
+
+        private void MostrarTablaDerivacion(List<PasoDerivacion> pasos)
+        {
+            dataGridViewDerivacion.Rows.Clear();
+            dataGridViewDerivacion.Columns.Clear();
+
+            dataGridViewDerivacion.Columns.Add("Regla", "Regla aplicada");
+            dataGridViewDerivacion.Columns.Add("ExpresionActual", "Expresión actual");
+
+            foreach (PasoDerivacion paso in pasos)
+            {
+                dataGridViewDerivacion.Rows.Add(paso.Regla, paso.ExpresionActual);
+            }
+
+            dataGridViewDerivacion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
     }
 }

@@ -66,29 +66,34 @@
             this.Posicion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelExpresion = new System.Windows.Forms.Label();
             this.labelResultado = new System.Windows.Forms.Label();
+            this.treeViewDerivacion = new System.Windows.Forms.TreeView();
+            this.dataGridViewDerivacion = new System.Windows.Forms.DataGridView();
             this.tabPrincipal.SuspendLayout();
             this.tabPageExpresionMatematica.SuspendLayout();
+            this.tabPageArbolDerivacion.SuspendLayout();
+            this.tabPageTablaDerivacion.SuspendLayout();
             this.tabPageHistorialExpresiones.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTokens)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDerivacion)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxExpresionMatematica
             // 
             this.textBoxExpresionMatematica.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.textBoxExpresionMatematica.Location = new System.Drawing.Point(43, 31);
-            this.textBoxExpresionMatematica.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxExpresionMatematica.Location = new System.Drawing.Point(57, 38);
+            this.textBoxExpresionMatematica.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxExpresionMatematica.Name = "textBoxExpresionMatematica";
-            this.textBoxExpresionMatematica.Size = new System.Drawing.Size(415, 24);
+            this.textBoxExpresionMatematica.Size = new System.Drawing.Size(552, 28);
             this.textBoxExpresionMatematica.TabIndex = 0;
             this.textBoxExpresionMatematica.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxExpresionMatematica_KeyPress);
             // 
             // buttonEvaluar
             // 
-            this.buttonEvaluar.Location = new System.Drawing.Point(472, 31);
-            this.buttonEvaluar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonEvaluar.Location = new System.Drawing.Point(629, 38);
+            this.buttonEvaluar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonEvaluar.Name = "buttonEvaluar";
-            this.buttonEvaluar.Size = new System.Drawing.Size(88, 23);
+            this.buttonEvaluar.Size = new System.Drawing.Size(117, 28);
             this.buttonEvaluar.TabIndex = 1;
             this.buttonEvaluar.Text = "Evaluar";
             this.buttonEvaluar.UseVisualStyleBackColor = true;
@@ -96,10 +101,10 @@
             // 
             // buttonLimpiar
             // 
-            this.buttonLimpiar.Location = new System.Drawing.Point(472, 58);
-            this.buttonLimpiar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonLimpiar.Location = new System.Drawing.Point(629, 71);
+            this.buttonLimpiar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLimpiar.Name = "buttonLimpiar";
-            this.buttonLimpiar.Size = new System.Drawing.Size(88, 23);
+            this.buttonLimpiar.Size = new System.Drawing.Size(117, 28);
             this.buttonLimpiar.TabIndex = 2;
             this.buttonLimpiar.Text = "Limpiar";
             this.buttonLimpiar.UseVisualStyleBackColor = true;
@@ -108,11 +113,11 @@
             // textBoxResultado
             // 
             this.textBoxResultado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBoxResultado.Location = new System.Drawing.Point(42, 95);
-            this.textBoxResultado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxResultado.Location = new System.Drawing.Point(56, 117);
+            this.textBoxResultado.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxResultado.Name = "textBoxResultado";
             this.textBoxResultado.ReadOnly = true;
-            this.textBoxResultado.Size = new System.Drawing.Size(416, 23);
+            this.textBoxResultado.Size = new System.Drawing.Size(553, 26);
             this.textBoxResultado.TabIndex = 3;
             // 
             // tabPrincipal
@@ -122,11 +127,11 @@
             this.tabPrincipal.Controls.Add(this.tabPageTablaDerivacion);
             this.tabPrincipal.Controls.Add(this.tabPageHistorialExpresiones);
             this.tabPrincipal.Controls.Add(this.tabPage1);
-            this.tabPrincipal.Location = new System.Drawing.Point(18, 136);
-            this.tabPrincipal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPrincipal.Location = new System.Drawing.Point(24, 167);
+            this.tabPrincipal.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPrincipal.Name = "tabPrincipal";
             this.tabPrincipal.SelectedIndex = 0;
-            this.tabPrincipal.Size = new System.Drawing.Size(562, 255);
+            this.tabPrincipal.Size = new System.Drawing.Size(749, 314);
             this.tabPrincipal.TabIndex = 4;
             // 
             // tabPageExpresionMatematica
@@ -151,21 +156,21 @@
             this.tabPageExpresionMatematica.Controls.Add(this.Nueve);
             this.tabPageExpresionMatematica.Controls.Add(this.Ocho);
             this.tabPageExpresionMatematica.Controls.Add(this.Siete);
-            this.tabPageExpresionMatematica.Location = new System.Drawing.Point(4, 22);
-            this.tabPageExpresionMatematica.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageExpresionMatematica.Location = new System.Drawing.Point(4, 25);
+            this.tabPageExpresionMatematica.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPageExpresionMatematica.Name = "tabPageExpresionMatematica";
-            this.tabPageExpresionMatematica.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPageExpresionMatematica.Size = new System.Drawing.Size(554, 229);
+            this.tabPageExpresionMatematica.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPageExpresionMatematica.Size = new System.Drawing.Size(741, 285);
             this.tabPageExpresionMatematica.TabIndex = 0;
             this.tabPageExpresionMatematica.Text = "Expresión matemática";
             this.tabPageExpresionMatematica.UseVisualStyleBackColor = true;
             // 
             // Doble_Cero
             // 
-            this.Doble_Cero.Location = new System.Drawing.Point(194, 171);
-            this.Doble_Cero.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Doble_Cero.Location = new System.Drawing.Point(259, 210);
+            this.Doble_Cero.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Doble_Cero.Name = "Doble_Cero";
-            this.Doble_Cero.Size = new System.Drawing.Size(79, 32);
+            this.Doble_Cero.Size = new System.Drawing.Size(105, 39);
             this.Doble_Cero.TabIndex = 19;
             this.Doble_Cero.Text = "00";
             this.Doble_Cero.UseVisualStyleBackColor = true;
@@ -174,10 +179,10 @@
             // btnNum0
             // 
             this.btnNum0.AccessibleName = "btnNum0";
-            this.btnNum0.Location = new System.Drawing.Point(105, 171);
-            this.btnNum0.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnNum0.Location = new System.Drawing.Point(140, 210);
+            this.btnNum0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNum0.Name = "btnNum0";
-            this.btnNum0.Size = new System.Drawing.Size(79, 32);
+            this.btnNum0.Size = new System.Drawing.Size(105, 39);
             this.btnNum0.TabIndex = 18;
             this.btnNum0.Tag = "btnNum0";
             this.btnNum0.Text = "0";
@@ -186,10 +191,10 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(373, 172);
-            this.button10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button10.Location = new System.Drawing.Point(497, 212);
+            this.button10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(79, 32);
+            this.button10.Size = new System.Drawing.Size(105, 39);
             this.button10.TabIndex = 17;
             this.button10.Text = "+";
             this.button10.UseVisualStyleBackColor = true;
@@ -197,10 +202,10 @@
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(284, 171);
-            this.button13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button13.Location = new System.Drawing.Point(379, 210);
+            this.button13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(79, 32);
+            this.button13.Size = new System.Drawing.Size(105, 39);
             this.button13.TabIndex = 16;
             this.button13.Text = ".";
             this.button13.UseVisualStyleBackColor = true;
@@ -208,10 +213,10 @@
             // 
             // Potencia
             // 
-            this.Potencia.Location = new System.Drawing.Point(373, 23);
-            this.Potencia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Potencia.Location = new System.Drawing.Point(497, 28);
+            this.Potencia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Potencia.Name = "Potencia";
-            this.Potencia.Size = new System.Drawing.Size(79, 32);
+            this.Potencia.Size = new System.Drawing.Size(105, 39);
             this.Potencia.TabIndex = 15;
             this.Potencia.Text = "^";
             this.Potencia.UseVisualStyleBackColor = true;
@@ -219,10 +224,10 @@
             // 
             // AC
             // 
-            this.AC.Location = new System.Drawing.Point(284, 23);
-            this.AC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AC.Location = new System.Drawing.Point(379, 28);
+            this.AC.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AC.Name = "AC";
-            this.AC.Size = new System.Drawing.Size(79, 32);
+            this.AC.Size = new System.Drawing.Size(105, 39);
             this.AC.TabIndex = 14;
             this.AC.Text = "AC";
             this.AC.UseVisualStyleBackColor = true;
@@ -230,10 +235,10 @@
             // 
             // Parentesis_der
             // 
-            this.Parentesis_der.Location = new System.Drawing.Point(194, 23);
-            this.Parentesis_der.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Parentesis_der.Location = new System.Drawing.Point(259, 28);
+            this.Parentesis_der.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Parentesis_der.Name = "Parentesis_der";
-            this.Parentesis_der.Size = new System.Drawing.Size(79, 32);
+            this.Parentesis_der.Size = new System.Drawing.Size(105, 39);
             this.Parentesis_der.TabIndex = 13;
             this.Parentesis_der.Text = ")";
             this.Parentesis_der.UseVisualStyleBackColor = true;
@@ -241,10 +246,10 @@
             // 
             // Parentesis_izq
             // 
-            this.Parentesis_izq.Location = new System.Drawing.Point(105, 23);
-            this.Parentesis_izq.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Parentesis_izq.Location = new System.Drawing.Point(140, 28);
+            this.Parentesis_izq.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Parentesis_izq.Name = "Parentesis_izq";
-            this.Parentesis_izq.Size = new System.Drawing.Size(79, 32);
+            this.Parentesis_izq.Size = new System.Drawing.Size(105, 39);
             this.Parentesis_izq.TabIndex = 12;
             this.Parentesis_izq.Tag = "";
             this.Parentesis_izq.Text = "(";
@@ -253,10 +258,10 @@
             // 
             // Dos
             // 
-            this.Dos.Location = new System.Drawing.Point(194, 134);
-            this.Dos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Dos.Location = new System.Drawing.Point(259, 165);
+            this.Dos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Dos.Name = "Dos";
-            this.Dos.Size = new System.Drawing.Size(79, 32);
+            this.Dos.Size = new System.Drawing.Size(105, 39);
             this.Dos.TabIndex = 11;
             this.Dos.Text = "2";
             this.Dos.UseVisualStyleBackColor = true;
@@ -264,10 +269,10 @@
             // 
             // Uno
             // 
-            this.Uno.Location = new System.Drawing.Point(105, 134);
-            this.Uno.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Uno.Location = new System.Drawing.Point(140, 165);
+            this.Uno.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Uno.Name = "Uno";
-            this.Uno.Size = new System.Drawing.Size(79, 32);
+            this.Uno.Size = new System.Drawing.Size(105, 39);
             this.Uno.TabIndex = 10;
             this.Uno.Text = "1";
             this.Uno.UseVisualStyleBackColor = true;
@@ -275,10 +280,10 @@
             // 
             // Resta
             // 
-            this.Resta.Location = new System.Drawing.Point(373, 135);
-            this.Resta.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Resta.Location = new System.Drawing.Point(497, 166);
+            this.Resta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Resta.Name = "Resta";
-            this.Resta.Size = new System.Drawing.Size(79, 32);
+            this.Resta.Size = new System.Drawing.Size(105, 39);
             this.Resta.TabIndex = 9;
             this.Resta.Text = "-";
             this.Resta.UseVisualStyleBackColor = true;
@@ -286,10 +291,10 @@
             // 
             // Tres
             // 
-            this.Tres.Location = new System.Drawing.Point(284, 135);
-            this.Tres.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Tres.Location = new System.Drawing.Point(379, 166);
+            this.Tres.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Tres.Name = "Tres";
-            this.Tres.Size = new System.Drawing.Size(79, 32);
+            this.Tres.Size = new System.Drawing.Size(105, 39);
             this.Tres.TabIndex = 8;
             this.Tres.Text = "3";
             this.Tres.UseVisualStyleBackColor = true;
@@ -297,10 +302,10 @@
             // 
             // Seis
             // 
-            this.Seis.Location = new System.Drawing.Point(284, 98);
-            this.Seis.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Seis.Location = new System.Drawing.Point(379, 121);
+            this.Seis.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Seis.Name = "Seis";
-            this.Seis.Size = new System.Drawing.Size(79, 32);
+            this.Seis.Size = new System.Drawing.Size(105, 39);
             this.Seis.TabIndex = 7;
             this.Seis.Text = "6";
             this.Seis.UseVisualStyleBackColor = true;
@@ -308,10 +313,10 @@
             // 
             // Cinco
             // 
-            this.Cinco.Location = new System.Drawing.Point(194, 98);
-            this.Cinco.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Cinco.Location = new System.Drawing.Point(259, 121);
+            this.Cinco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Cinco.Name = "Cinco";
-            this.Cinco.Size = new System.Drawing.Size(79, 32);
+            this.Cinco.Size = new System.Drawing.Size(105, 39);
             this.Cinco.TabIndex = 6;
             this.Cinco.Text = "5";
             this.Cinco.UseVisualStyleBackColor = true;
@@ -319,10 +324,10 @@
             // 
             // Cuatro
             // 
-            this.Cuatro.Location = new System.Drawing.Point(105, 98);
-            this.Cuatro.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Cuatro.Location = new System.Drawing.Point(140, 121);
+            this.Cuatro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Cuatro.Name = "Cuatro";
-            this.Cuatro.Size = new System.Drawing.Size(79, 32);
+            this.Cuatro.Size = new System.Drawing.Size(105, 39);
             this.Cuatro.TabIndex = 5;
             this.Cuatro.Text = "4";
             this.Cuatro.UseVisualStyleBackColor = true;
@@ -330,10 +335,10 @@
             // 
             // Division
             // 
-            this.Division.Location = new System.Drawing.Point(373, 60);
-            this.Division.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Division.Location = new System.Drawing.Point(497, 74);
+            this.Division.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Division.Name = "Division";
-            this.Division.Size = new System.Drawing.Size(79, 32);
+            this.Division.Size = new System.Drawing.Size(105, 39);
             this.Division.TabIndex = 4;
             this.Division.Text = "/";
             this.Division.UseVisualStyleBackColor = true;
@@ -341,10 +346,10 @@
             // 
             // Multiplicacion
             // 
-            this.Multiplicacion.Location = new System.Drawing.Point(373, 98);
-            this.Multiplicacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Multiplicacion.Location = new System.Drawing.Point(497, 121);
+            this.Multiplicacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Multiplicacion.Name = "Multiplicacion";
-            this.Multiplicacion.Size = new System.Drawing.Size(79, 32);
+            this.Multiplicacion.Size = new System.Drawing.Size(105, 39);
             this.Multiplicacion.TabIndex = 3;
             this.Multiplicacion.Text = "X";
             this.Multiplicacion.UseVisualStyleBackColor = true;
@@ -352,10 +357,10 @@
             // 
             // Nueve
             // 
-            this.Nueve.Location = new System.Drawing.Point(284, 60);
-            this.Nueve.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Nueve.Location = new System.Drawing.Point(379, 74);
+            this.Nueve.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Nueve.Name = "Nueve";
-            this.Nueve.Size = new System.Drawing.Size(79, 32);
+            this.Nueve.Size = new System.Drawing.Size(105, 39);
             this.Nueve.TabIndex = 2;
             this.Nueve.Text = "9";
             this.Nueve.UseVisualStyleBackColor = true;
@@ -363,10 +368,10 @@
             // 
             // Ocho
             // 
-            this.Ocho.Location = new System.Drawing.Point(194, 60);
-            this.Ocho.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Ocho.Location = new System.Drawing.Point(259, 74);
+            this.Ocho.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Ocho.Name = "Ocho";
-            this.Ocho.Size = new System.Drawing.Size(79, 32);
+            this.Ocho.Size = new System.Drawing.Size(105, 39);
             this.Ocho.TabIndex = 1;
             this.Ocho.Text = "8";
             this.Ocho.UseVisualStyleBackColor = true;
@@ -374,10 +379,10 @@
             // 
             // Siete
             // 
-            this.Siete.Location = new System.Drawing.Point(105, 60);
-            this.Siete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Siete.Location = new System.Drawing.Point(140, 74);
+            this.Siete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Siete.Name = "Siete";
-            this.Siete.Size = new System.Drawing.Size(79, 32);
+            this.Siete.Size = new System.Drawing.Size(105, 39);
             this.Siete.TabIndex = 0;
             this.Siete.Text = "7";
             this.Siete.UseVisualStyleBackColor = true;
@@ -385,21 +390,23 @@
             // 
             // tabPageArbolDerivacion
             // 
-            this.tabPageArbolDerivacion.Location = new System.Drawing.Point(4, 22);
-            this.tabPageArbolDerivacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageArbolDerivacion.Controls.Add(this.treeViewDerivacion);
+            this.tabPageArbolDerivacion.Location = new System.Drawing.Point(4, 25);
+            this.tabPageArbolDerivacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPageArbolDerivacion.Name = "tabPageArbolDerivacion";
-            this.tabPageArbolDerivacion.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPageArbolDerivacion.Size = new System.Drawing.Size(554, 229);
+            this.tabPageArbolDerivacion.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPageArbolDerivacion.Size = new System.Drawing.Size(741, 285);
             this.tabPageArbolDerivacion.TabIndex = 1;
             this.tabPageArbolDerivacion.Text = "Árbol de derivación";
             this.tabPageArbolDerivacion.UseVisualStyleBackColor = true;
             // 
             // tabPageTablaDerivacion
             // 
-            this.tabPageTablaDerivacion.Location = new System.Drawing.Point(4, 22);
-            this.tabPageTablaDerivacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageTablaDerivacion.Controls.Add(this.dataGridViewDerivacion);
+            this.tabPageTablaDerivacion.Location = new System.Drawing.Point(4, 25);
+            this.tabPageTablaDerivacion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPageTablaDerivacion.Name = "tabPageTablaDerivacion";
-            this.tabPageTablaDerivacion.Size = new System.Drawing.Size(554, 229);
+            this.tabPageTablaDerivacion.Size = new System.Drawing.Size(741, 285);
             this.tabPageTablaDerivacion.TabIndex = 2;
             this.tabPageTablaDerivacion.Text = "Tabla de derivación";
             this.tabPageTablaDerivacion.UseVisualStyleBackColor = true;
@@ -408,10 +415,10 @@
             // 
             this.tabPageHistorialExpresiones.Controls.Add(this.listBoxHistorial);
             this.tabPageHistorialExpresiones.Controls.Add(this.labelHistorial);
-            this.tabPageHistorialExpresiones.Location = new System.Drawing.Point(4, 22);
-            this.tabPageHistorialExpresiones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageHistorialExpresiones.Location = new System.Drawing.Point(4, 25);
+            this.tabPageHistorialExpresiones.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPageHistorialExpresiones.Name = "tabPageHistorialExpresiones";
-            this.tabPageHistorialExpresiones.Size = new System.Drawing.Size(554, 229);
+            this.tabPageHistorialExpresiones.Size = new System.Drawing.Size(741, 285);
             this.tabPageHistorialExpresiones.TabIndex = 3;
             this.tabPageHistorialExpresiones.Text = "Historial de expresiones";
             this.tabPageHistorialExpresiones.UseVisualStyleBackColor = true;
@@ -419,29 +426,30 @@
             // listBoxHistorial
             // 
             this.listBoxHistorial.FormattingEnabled = true;
-            this.listBoxHistorial.Location = new System.Drawing.Point(14, 31);
+            this.listBoxHistorial.ItemHeight = 16;
+            this.listBoxHistorial.Location = new System.Drawing.Point(19, 38);
+            this.listBoxHistorial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.listBoxHistorial.Name = "listBoxHistorial";
-            this.listBoxHistorial.Size = new System.Drawing.Size(526, 186);
+            this.listBoxHistorial.Size = new System.Drawing.Size(700, 228);
             this.listBoxHistorial.TabIndex = 1;
             // 
             // labelHistorial
             // 
             this.labelHistorial.AutoSize = true;
-            this.labelHistorial.Location = new System.Drawing.Point(196, 10);
-            this.labelHistorial.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelHistorial.Location = new System.Drawing.Point(261, 12);
             this.labelHistorial.Name = "labelHistorial";
-            this.labelHistorial.Size = new System.Drawing.Size(170, 13);
+            this.labelHistorial.Size = new System.Drawing.Size(219, 16);
             this.labelHistorial.TabIndex = 0;
             this.labelHistorial.Text = "Historial de expresiones evaluadas";
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.dataGridViewTokens);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage1.Size = new System.Drawing.Size(554, 229);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Size = new System.Drawing.Size(741, 285);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "Analizador Lexico";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -455,13 +463,13 @@
             this.Tipo,
             this.Posicion});
             this.dataGridViewTokens.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewTokens.Location = new System.Drawing.Point(2, 2);
-            this.dataGridViewTokens.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewTokens.Location = new System.Drawing.Point(3, 2);
+            this.dataGridViewTokens.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridViewTokens.Name = "dataGridViewTokens";
             this.dataGridViewTokens.RowHeadersVisible = false;
             this.dataGridViewTokens.RowHeadersWidth = 51;
             this.dataGridViewTokens.RowTemplate.Height = 24;
-            this.dataGridViewTokens.Size = new System.Drawing.Size(550, 225);
+            this.dataGridViewTokens.Size = new System.Drawing.Size(735, 281);
             this.dataGridViewTokens.TabIndex = 20;
             // 
             // Valor
@@ -485,28 +493,46 @@
             // labelExpresion
             // 
             this.labelExpresion.AutoSize = true;
-            this.labelExpresion.Location = new System.Drawing.Point(40, 15);
-            this.labelExpresion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelExpresion.Location = new System.Drawing.Point(53, 18);
             this.labelExpresion.Name = "labelExpresion";
-            this.labelExpresion.Size = new System.Drawing.Size(110, 13);
+            this.labelExpresion.Size = new System.Drawing.Size(140, 16);
             this.labelExpresion.TabIndex = 5;
             this.labelExpresion.Text = "Expresión matemática";
             // 
             // labelResultado
             // 
             this.labelResultado.AutoSize = true;
-            this.labelResultado.Location = new System.Drawing.Point(214, 67);
-            this.labelResultado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelResultado.Location = new System.Drawing.Point(285, 82);
             this.labelResultado.Name = "labelResultado";
-            this.labelResultado.Size = new System.Drawing.Size(55, 13);
+            this.labelResultado.Size = new System.Drawing.Size(69, 16);
             this.labelResultado.TabIndex = 6;
             this.labelResultado.Text = "Resultado";
             // 
+            // treeViewDerivacion
+            // 
+            this.treeViewDerivacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewDerivacion.Location = new System.Drawing.Point(3, 2);
+            this.treeViewDerivacion.Name = "treeViewDerivacion";
+            this.treeViewDerivacion.Size = new System.Drawing.Size(735, 281);
+            this.treeViewDerivacion.TabIndex = 0;
+            this.treeViewDerivacion.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewDerivacion_AfterSelect);
+            // 
+            // dataGridViewDerivacion
+            // 
+            this.dataGridViewDerivacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDerivacion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewDerivacion.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewDerivacion.Name = "dataGridViewDerivacion";
+            this.dataGridViewDerivacion.RowHeadersWidth = 51;
+            this.dataGridViewDerivacion.RowTemplate.Height = 24;
+            this.dataGridViewDerivacion.Size = new System.Drawing.Size(741, 285);
+            this.dataGridViewDerivacion.TabIndex = 0;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 414);
+            this.ClientSize = new System.Drawing.Size(800, 510);
             this.Controls.Add(this.labelResultado);
             this.Controls.Add(this.labelExpresion);
             this.Controls.Add(this.tabPrincipal);
@@ -514,15 +540,18 @@
             this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.buttonEvaluar);
             this.Controls.Add(this.textBoxExpresionMatematica);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "Evaluación de expresiones matemáticas";
             this.tabPrincipal.ResumeLayout(false);
             this.tabPageExpresionMatematica.ResumeLayout(false);
+            this.tabPageArbolDerivacion.ResumeLayout(false);
+            this.tabPageTablaDerivacion.ResumeLayout(false);
             this.tabPageHistorialExpresiones.ResumeLayout(false);
             this.tabPageHistorialExpresiones.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTokens)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDerivacion)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -568,6 +597,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Posicion;
+        private System.Windows.Forms.TreeView treeViewDerivacion;
+        private System.Windows.Forms.DataGridView dataGridViewDerivacion;
     }
 }
 

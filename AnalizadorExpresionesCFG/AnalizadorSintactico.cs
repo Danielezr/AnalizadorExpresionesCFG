@@ -83,10 +83,10 @@ namespace AnalizadorExpresionesCFG
         }
         private double Termino(NodoDerivacion nodoPadre)
         {
-            NodoDerivacion nodoFactor = new NodoDerivacion("Factor");
-            nodoPadre.AgregarHijo(nodoFactor);
+            NodoDerivacion nodoPotencia = new NodoDerivacion("Potencia");
+            nodoPadre.AgregarHijo(nodoPotencia);
 
-            double resultado = Factor(nodoFactor);
+            double resultado = Potencia(nodoPotencia);
 
             while (TokenActual.Tipo == TipoToken.OperadorMultiplicacion || TokenActual.Tipo == TipoToken.OperadorDivision)
             {
@@ -94,24 +94,55 @@ namespace AnalizadorExpresionesCFG
                 nodoPadre.AgregarHijo(new NodoDerivacion(tokenOperador.Valor));
                 Avanzar();
 
-                NodoDerivacion nodoFactorDer = new NodoDerivacion("Factor");
-                nodoPadre.AgregarHijo(nodoFactorDer);
+                NodoDerivacion nodoPotenciaDer = new NodoDerivacion("Potencia");
+                nodoPadre.AgregarHijo(nodoPotenciaDer);
 
                 if (tokenOperador.Tipo == TipoToken.OperadorMultiplicacion)
                 {
-                    HistorialDerivacion.Add(new PasoDerivacion("Termino -> Termino * Factor", ""));
-                    resultado *= Factor(nodoFactorDer);
+                    HistorialDerivacion.Add(new PasoDerivacion("Termino -> Termino * Potencia", ""));
+                    resultado *= Potencia(nodoPotenciaDer);
                 }
                 else
                 {
-                    HistorialDerivacion.Add(new PasoDerivacion("Termino -> Termino / Factor", ""));
-                    double divisor = Factor(nodoFactorDer);
-                    // aca lo deje como division, te toca lo de divison entre cero aqui
+                    HistorialDerivacion.Add(new PasoDerivacion("Termino -> Termino / Potencia", ""));
+                    double divisor = Potencia(nodoPotenciaDer);
+
+                    if (divisor == 0)
+                    {
+                        throw new DivideByZeroException("Error matemático: no se puede dividir entre cero.");
+                    }
+
                     resultado /= divisor;
                 }
             }
+
             return resultado;
         }
+        private double Potencia(NodoDerivacion nodoPadre)
+        {
+            NodoDerivacion nodoFactor = new NodoDerivacion("Factor");
+            nodoPadre.AgregarHijo(nodoFactor);
+
+            double resultado = Factor(nodoFactor);
+
+            if (TokenActual.Tipo == TipoToken.OperadorPotencia)
+            {
+                Token tokenOperador = TokenActual;
+                nodoPadre.AgregarHijo(new NodoDerivacion(tokenOperador.Valor));
+                Avanzar();
+
+                NodoDerivacion nodoPotenciaDer = new NodoDerivacion("Potencia");
+                nodoPadre.AgregarHijo(nodoPotenciaDer);
+
+                HistorialDerivacion.Add(new PasoDerivacion("Potencia -> Factor ^ Potencia", ""));
+
+                double exponente = Potencia(nodoPotenciaDer);
+                resultado = Math.Pow(resultado, exponente);
+            }
+
+            return resultado;
+        }
+
         private double Factor(NodoDerivacion nodoPadre)
         {
             if (TokenActual.Tipo == TipoToken.ParentesisIzquierdo)
