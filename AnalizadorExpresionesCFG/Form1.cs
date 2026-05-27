@@ -170,15 +170,19 @@ namespace AnalizadorExpresionesCFG
             dataGridViewDerivacion.Rows.Clear();
             dataGridViewDerivacion.Columns.Clear();
 
+            dataGridViewDerivacion.Columns.Add("Paso", "Paso");
             dataGridViewDerivacion.Columns.Add("Regla", "Regla aplicada");
-            dataGridViewDerivacion.Columns.Add("ExpresionActual", "Expresión actual");
 
+            int numeroPaso = 1;
+
+            //agregar cada paso de derivación a la tabla
             foreach (PasoDerivacion paso in pasos)
             {
-                dataGridViewDerivacion.Rows.Add(paso.Regla, paso.ExpresionActual);
+                dataGridViewDerivacion.Rows.Add(numeroPaso, paso.Regla);
+                numeroPaso++;
             }
 
-            dataGridViewDerivacion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewDerivacion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;  
         }
     }
 }
