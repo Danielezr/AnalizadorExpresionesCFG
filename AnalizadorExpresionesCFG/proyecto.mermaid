@@ -1,0 +1,54 @@
+flowchart TD
+    Usuario["Usuario"]
+    Program["Program.cs<br/>Punto de entrada"]
+    Form["Form1.cs<br/>Interfaz WinForms"]
+    Designer["Form1.Designer.cs<br/>Controles visuales"]
+    Lexer["AnalizadorLexico.cs<br/>Analiza caracteres"]
+    Parser["AnalizadorSintactico.cs<br/>Valida CFG y evalua"]
+    Evaluador["EvaluadorExpresiones.cs<br/>Evaluador recursivo alterno"]
+
+    Token["Token.cs<br/>Valor, tipo y posicion"]
+    TipoToken["TipoToken.cs<br/>Tipos lexicos"]
+    Nodo["NodoDerivacion.cs<br/>Arbol de derivacion"]
+    Paso["PasoDerivacion.cs<br/>Reglas aplicadas"]
+
+    Entrada["Expresion matematica<br/>Ej: 2+3*(4^2)"]
+    Tokens["Lista de tokens"]
+    Resultado["Resultado numerico"]
+    ArbolUI["TreeView<br/>Arbol de derivacion"]
+    TablaTokens["DataGridView<br/>Tokens"]
+    TablaDerivacion["DataGridView<br/>Pasos CFG"]
+    Historial["ListBox<br/>Historial"]
+
+    Usuario -->|Escribe o pulsa botones| Form
+    Program -->|Application.Run(new Form1())| Form
+    Designer -->|Define botones, textos y tablas| Form
+
+    Form -->|Lee textBoxExpresionMatematica| Entrada
+    Entrada -->|Analizar(expresion)| Lexer
+    Lexer -->|Crea| Token
+    Token -->|Usa enum| TipoToken
+    Lexer -->|Devuelve| Tokens
+
+    Tokens -->|MostrarTokens| TablaTokens
+    Tokens -->|new AnalizadorSintactico(tokens)| Parser
+    Parser -->|Parsear()| Resultado
+    Parser -->|Construye| Nodo
+    Parser -->|Registra| Paso
+
+    Nodo -->|RaizArbol| ArbolUI
+    Paso -->|HistorialDerivacion| TablaDerivacion
+    Resultado -->|textBoxResultado| Form
+    Resultado -->|Agrega entrada| Historial
+
+    Entrada -.->|Puede evaluar sin UI CFG| Evaluador
+    Evaluador -.->|Devuelve double| Resultado
+
+    subgraph Gramatica["Gramatica usada por AnalizadorSintactico"]
+        G1["Expresion -> Termino ((+|-) Termino)*"]
+        G2["Termino -> Potencia ((*|/) Potencia)*"]
+        G3["Potencia -> Factor (^ Potencia)?"]
+        G4["Factor -> Numero | ( Expresion )"]
+    end
+
+    Parser --> Gramatica
