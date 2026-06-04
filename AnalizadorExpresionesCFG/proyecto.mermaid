@@ -21,18 +21,18 @@ flowchart TD
     Historial["ListBox<br/>Historial"]
 
     Usuario -->|Escribe o pulsa botones| Form
-    Program -->|Application.Run(new Form1())| Form
+    Program -->|Inicia Form1| Form
     Designer -->|Define botones, textos y tablas| Form
 
     Form -->|Lee textBoxExpresionMatematica| Entrada
-    Entrada -->|Analizar(expresion)| Lexer
+    Entrada -->|Analizar expresion| Lexer
     Lexer -->|Crea| Token
     Token -->|Usa enum| TipoToken
     Lexer -->|Devuelve| Tokens
 
     Tokens -->|MostrarTokens| TablaTokens
-    Tokens -->|new AnalizadorSintactico(tokens)| Parser
-    Parser -->|Parsear()| Resultado
+    Tokens -->|Crea parser con tokens| Parser
+    Parser -->|Parsear| Resultado
     Parser -->|Construye| Nodo
     Parser -->|Registra| Paso
 
@@ -45,10 +45,10 @@ flowchart TD
     Evaluador -.->|Devuelve double| Resultado
 
     subgraph Gramatica["Gramatica usada por AnalizadorSintactico"]
-        G1["Expresion -> Termino ((+|-) Termino)*"]
-        G2["Termino -> Potencia ((*|/) Potencia)*"]
-        G3["Potencia -> Factor (^ Potencia)?"]
-        G4["Factor -> Numero | ( Expresion )"]
+        G1["Expresion -> Termino con sumas o restas"]
+        G2["Termino -> Potencia con multiplicaciones o divisiones"]
+        G3["Potencia -> Factor con exponente opcional"]
+        G4["Factor -> Numero o expresion entre parentesis"]
     end
 
     Parser --> Gramatica
